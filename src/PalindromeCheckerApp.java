@@ -1,9 +1,9 @@
 /**
  * ==========================================================
- * MAIN CLASS - UseCase1PalindromeCheckerApp
+ * MAIN CLASS - UseCase2PalindromeCheckerApp
  * ==========================================================
  *
- * Use Case 1: Application Entry & Welcome Message
+ * Use Case 1: Hardcoded Palindrome Validation
  *
  * Description:
  * This class represents the entry point of the
@@ -33,9 +33,33 @@ public class PalindromeCheckerApp {
      */
     public static void main(String[] args) {
 
-        System.out.println("Welcome to Palindrome Checker Management System");
-        System.out.println("Version: 1.0");
-        System.out.println("System initialized successfully");
+        // Step 1: Store a predefined (hardcoded) string
+        String input = "madam";
+
+        // Step 2: Assume the string is a palindrome initially
+        boolean isPalindrome = true;
+
+        // Step 3: Loop only until half of the string length
+        // Compare characters from both ends moving toward the center
+        for (int i = 0; i < input.length() / 2; i++) {
+
+            // Character from the beginning
+            char startChar = input.charAt(i);
+
+            // Corresponding character from the end
+            char endChar = input.charAt(input.length() - 1 - i);
+
+            // Step 4: Compare characters
+            if (startChar != endChar) {
+                isPalindrome = false;
+                break;  // Exit early if mismatch is found
+            }
+        }
+
+        // Step 5: Display output in required format
+        System.out.println("Input text: " + input);
+        System.out.println("Is it a Palindrome? : " + isPalindrome);
     }
 }
+
 
