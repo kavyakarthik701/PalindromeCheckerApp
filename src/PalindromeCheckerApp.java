@@ -1,65 +1,57 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.LinkedList;
 
 /**
- * MAIN CLASS - UseCase7PalindromeCheckerApp
- * =====================================================
- * 
- * Use Case 7: Deque Based Optimized Palindrome Checker
- * 
- * Description:
- * This class validates a palindrome using a Deque
- * (Double Ended Queue).
- * 
- * Characters are inserted into the deque and then
- * compared by removing elements from both ends:
- * 
- * - removeFirst()
+ * ===========================================================================
+ * MAIN CLASS - UseCase8PalindromeCheckerApp
+ * ===========================================================================
+ * * Use Case 8: Linked List Based Palindrome Checker
+ * * Description:
+ * This class checks whether a string is a palindrome
+ * using a LinkedList.
+ * * Characters are added to the list and then compared
+ * by removing elements from both ends:
+ * * - removeFirst()
  * - removeLast()
- * 
- * This avoids reversing the String and provides an
- * efficient front-to-back comparison approach.
- * 
- * This use case demonstrates optimal bidirectional
- * traversal using Deque.
- * 
- * @author Developer
- * @version 7.0
+ * * This demonstrates how LinkedList supports 
+ * double-ended operations for symmetric validation.
+ * * @author Developer
+ * @version 8.0
  */
 public class PalindromeCheckerApp {
-    
+
     /**
-     * Application entry point for UC7.
-     * 
-     * @param args Command-line arguments
+     * Application entry point for UC8.
+     * * @param args Command-line arguments
      */
     public static void main(String[] args) {
         
         // Define the input string
-        String input = "refer";
+        String input = "level";
         
-        // Create a Deque to store characters
-        Deque<Character> deque = new ArrayDeque<>();
+        // Create a LinkedList to store characters
+        LinkedList<Character> list = new LinkedList<>();
         
-        // Add each character to the deque
+        // Add each character to the linked list
         for (char c : input.toCharArray()) {
-            deque.add(c);  // Adds character to the end of the deque
+            list.add(c);
         }
         
-        // Flag to track palindrome result
+        // Flag to track palindrome state
         boolean isPalindrome = true;
         
-        // Continue comparison while more than one element exists
-        while (deque.size() > 1) {
-            // Remove and compare first and last characters
-            // If they don't match, it's not a palindrome
-            if (deque.removeFirst() != deque.removeLast()) {
+        // Compare until only one or zero elements remain
+        while (list.size() > 1) {
+            // Remove from both ends and compare
+            char first = list.removeFirst();
+            char last = list.removeLast();
+            
+            if (first != last) {
                 isPalindrome = false;
-                break;  // No need to check further
+                break;
             }
         }
         
-        // Print the result
+        // Output the results
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
